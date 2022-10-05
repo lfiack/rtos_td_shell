@@ -99,13 +99,14 @@ int shell_exec(char * buf) {
 	return -1;
 }
 
-static char cmd_buffer[BUFFER_SIZE];
 static char backspace[] = "\b \b";
 static char prompt[] = "> ";
 
 int shell_run() {
 	int reading = 0;
 	int pos = 0;
+
+	static char cmd_buffer[BUFFER_SIZE];
 
 	while (1) {
 		uart_write(prompt, 2);
