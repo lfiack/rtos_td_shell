@@ -23,7 +23,7 @@ static shell_func_t shell_func_list[SHELL_FUNC_LIST_MAX_SIZE];
 
 static char print_buffer[BUFFER_SIZE];
 
-char uart_read() {
+static char uart_read() {
 	char c;
 
 	HAL_UART_Receive(&UART_DEVICE, (uint8_t*)(&c), 1, HAL_MAX_DELAY);
@@ -31,12 +31,12 @@ char uart_read() {
 	return c;
 }
 
-int uart_write(char * s, uint16_t size) {
+static int uart_write(char * s, uint16_t size) {
 	HAL_UART_Transmit(&UART_DEVICE, (uint8_t*)s, size, HAL_MAX_DELAY);
 	return size;
 }
 
-int sh_help(int argc, char ** argv) {
+static int sh_help(int argc, char ** argv) {
 	int i;
 	for(i = 0 ; i < shell_func_list_size ; i++) {
 		int size;
@@ -68,7 +68,7 @@ int shell_add(char c, int (* pfunc)(int argc, char ** argv), char * description)
 	return -1;
 }
 
-int shell_exec(char * buf) {
+static int shell_exec(char * buf) {
 	int i;
 
 	char c = buf[0];
