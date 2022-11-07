@@ -5,12 +5,11 @@ Le projet propre est disponible ici : https://github.com/lfiack/rtos_td_shell
 
 ### Ajout d'une structure
 1. Listez les variables statiques
-2. Dans le fichier **shell.h**, créez une structure nommée **h_shell_t**
-        Les membres de la structure correspondent aux variables statiques.
-3. Modifiez toutes les fonctions du shell qui manipulent les variables statiques
-        pour qu'elles prennent comme premier paramètre un pointeur sur la structure **h_shell_t**
+2. Dans le fichier **shell.h**, créez une structure nommée **h_shell_t**.
+        Les membres de la structure correspondent aux variables statiques
+3. Modifiez toutes les fonctions du shell qui manipulent les variables statiques pour qu'elles prennent comme premier paramètre un pointeur sur la structure **h_shell_t**
 4. Modifiez le contenu des fonctions pour utiliser les membres de la structure à la place des variables statiques
-5. Créez une instance statique de cette structure dans le main. Modifiez l'appel aux fonctions dans le main pour y ajouter la structure.
+5. Créez une instance statique de cette structure dans le main. Modifiez l'appel aux fonctions dans le main pour y ajouter la structure
 6. Testez vos modifications.
 
 ### Driver UART
@@ -32,8 +31,8 @@ typedef struct drv_shell_struct
 12. Créez deux fichiers **drv_uart.c** et **drv_uart.h**.
 13. Dans ces fichiers, créez deux fonctions :
 ```c
-uint8_t drv_uart_receive(char * pData, uint16_t size)
-uint8_t drv_uart_transmit(char * pData, uint16_t size)
+uint8_t drv_uart_receive(char * pData, uint16_t size);
+uint8_t drv_uart_transmit(char * pData, uint16_t size);
 ```
 14. Écrire le code de ces fonctions.
     Inspirez vous des fonctions 
@@ -44,9 +43,10 @@ uart_read()
 ```c
 uart_write(char * s, uint16_t size)
 ``` 
-dans **shell.c**.
-15. Dans **shell.c**, modifiez le code pour utiliser ces nouvelles fonctions à la place des anciennes.
-16. Modifiez le **main()** pour passer vos deux fonctions de driver à la structure du shell.
+dans **shell.c**
+
+15. Dans **shell.c**, modifiez le code pour utiliser ces nouvelles fonctions à la place des anciennes
+16. Modifiez le **main()** pour passer vos deux fonctions de driver à la structure du shell
 
 ### Intégration à FreeRTOS
 17. Activez l'OS et démarrez le scheduler 
